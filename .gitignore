@@ -1,1 +1,18 @@
 /build/
+# Eclipse files
+.settings/
+.classpath
+.project
+*.prefs
+
+# Build directories
+build/
+bin/
+target/
+
+# Logs
+*.log
+
+# Temporary files
+*.class
+.metadata
