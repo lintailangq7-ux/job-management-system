@@ -8,6 +8,5 @@
 </head>
 <body>
 三原
-西本
 </body>
 </html>
