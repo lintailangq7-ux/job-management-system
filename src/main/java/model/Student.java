@@ -1,7 +1,7 @@
 package model;
 
 public class Student {
-    private String gakusekiNo;        // 学籍番号 (PK)
+    private int gakusekiNo;           // 学籍番号 (PK)
     private String name;              // 氏名
     private String nameKana;          // 読み仮名
     private String classCode;         // クラス (FK)
@@ -17,8 +17,8 @@ public class Student {
     private String status;            // 活動状況など
 
     // Getter & Setter（省略せずに全部書きます）
-    public String getGakusekiNo() { return gakusekiNo; }
-    public void setGakusekiNo(String gakusekiNo) { this.gakusekiNo = gakusekiNo; }
+    public int getGakusekiNo() { return gakusekiNo; }
+    public void setGakusekiNo(int gakusekiNo) { this.gakusekiNo = gakusekiNo; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }

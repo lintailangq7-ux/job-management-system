@@ -13,7 +13,7 @@ public class StudentDao {
 
     private static final String URL = "jdbc:mysql://localhost:3306/あなたのDB名?useSSL=false&serverTimezone=Asia/Tokyo";
     private static final String USER = "root";
-    private static final String PASS = "パスワード";
+    private static final String PASS = "kcsf";
 
     // 学生一覧取得
     public List<Student> findAll() {
@@ -27,7 +27,7 @@ public class StudentDao {
             
             while (rs.next()) {
                 Student s = new Student();
-                s.setId(rs.getInt("id"));
+                s.setGakusekiNo(rs.getInt("id"));
                 s.setName(rs.getString("name"));
                 // 他のカラムもセット
                 list.add(s);
