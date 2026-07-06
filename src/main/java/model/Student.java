@@ -1,61 +1,52 @@
 package model;
 
 public class Student {
-    private int    gakusekiNo;        // 学籍番号 (PK)
-    private String name;              // 氏名
-    private String nameKana;          // 読み仮名
-    private String classCode;         // クラス (FK)
-    private String gender;            // 性別
-    private String birthDate;         // 生年月日
-    private String address;           // 住所
-    private String phone;             // 電話番号
-    private String email;             // メールアドレス
-    private String desiredIndustry;   // 希望業界
-    private String desiredOccupation; // 希望職種
-    private String desiredLocation;   // 希望勤務地
-    private int    shidouId;          // 指導ID (FK)
-    private String status;            // 活動状況など
-
-    // Getter & Setter（省略せずに全部書きます）
-    public int getGakusekiNo() { return gakusekiNo; }
-    public void setGakusekiNo(int gakusekiNo) { this.gakusekiNo = gakusekiNo; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getNameKana() { return nameKana; }
-    public void setNameKana(String nameKana) { this.nameKana = nameKana; }
-
-    public String getClassCode() { return classCode; }
-    public void setClassCode(String classCode) { this.classCode = classCode; }
-
-    public String getGender() { return gender; }
-    public void setGender(String gender) { this.gender = gender; }
-
-    public String getBirthDate() { return birthDate; }
-    public void setBirthDate(String birthDate) { this.birthDate = birthDate; }
-
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
-
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
-
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-
-    public String getDesiredIndustry() { return desiredIndustry; }
-    public void setDesiredIndustry(String desiredIndustry) { this.desiredIndustry = desiredIndustry; }
-
-    public String getDesiredOccupation() { return desiredOccupation; }
-    public void setDesiredOccupation(String desiredOccupation) { this.desiredOccupation = desiredOccupation; }
-
-    public String getDesiredLocation() { return desiredLocation; }
-    public void setDesiredLocation(String desiredLocation) { this.desiredLocation = desiredLocation; }
-
-    public Integer getShidouId() { return shidouId; }
-    public void setShidouId(Integer shidouId) { this.shidouId = shidouId; }
-
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
-}
+	    
+	    private int gakusekiBango;      // 学籍番号（主キー）
+	    private String kurasu;          // クラス
+	    private int shussekiBango;      // 出席番号
+	    private String shimei;          // 氏名
+	    private int zaisekiJokyo;       // 在籍状況
+	    private String dai1KibouShokushu; // 第1希望職種
+	    private String dai2KibouShokushu; // 第2希望職種
+	    private String dai3KibouShokushu; // 第3希望職種
+	    private String kenNaiGaiKibou;  // 県内外の希望
+	    private String seibetsu;        // 性別
+	    private String biko;            // 備考
+	    
+	    public Student() {}
+	    
+	    // Getter & Setter（省略可ですが一通り記載）
+	    public int getGakusekiBango() { return gakusekiBango; }
+	    public void setGakusekiBango(int gakusekiBango) { this.gakusekiBango = gakusekiBango; }
+	    
+	    public String getKurasu() { return kurasu; }
+	    public void setKurasu(String kurasu) { this.kurasu = kurasu; }
+	    
+	    public int getShussekiBango() { return shussekiBango; }
+	    public void setShussekiBango(int shussekiBango) { this.shussekiBango = shussekiBango; }
+	    
+	    public String getShimei() { return shimei; }
+	    public void setShimei(String shimei) { this.shimei = shimei; }
+	    
+	    public int getZaisekiJokyo() { return zaisekiJokyo; }
+	    public void setZaisekiJokyo(int zaisekiJokyo) { this.zaisekiJokyo = zaisekiJokyo; }
+	    
+	    public String getDai1KibouShokushu() { return dai1KibouShokushu; }
+	    public void setDai1KibouShokushu(String dai1KibouShokushu) { this.dai1KibouShokushu = dai1KibouShokushu; }
+	    
+	    public String getDai2KibouShokushu() { return dai2KibouShokushu; }
+	    public void setDai2KibouShokushu(String dai2KibouShokushu) { this.dai2KibouShokushu = dai2KibouShokushu; }
+	    
+	    public String getDai3KibouShokushu() { return dai3KibouShokushu; }
+	    public void setDai3KibouShokushu(String dai3KibouShokushu) { this.dai3KibouShokushu = dai3KibouShokushu; }
+	    
+	    public String getKenNaiGaiKibou() { return kenNaiGaiKibou; }
+	    public void setKenNaiGaiKibou(String kenNaiGaiKibou) { this.kenNaiGaiKibou = kenNaiGaiKibou; }
+	    
+	    public String getSeibetsu() { return seibetsu; }
+	    public void setSeibetsu(String seibetsu) { this.seibetsu = seibetsu; }
+	    
+	    public String getBiko() { return biko; }
+	    public void setBiko(String biko) { this.biko = biko; }
+	}

@@ -1,130 +1,177 @@
 package model;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
+import java.sql.Time;
 
+/**
+ * 就職情報テーブルに対応するモデルクラス
+ */
 public class Employment {
+
+    // 主キー
+    private int shushokuJohoId;        // 就職情報ID
     
-    private int shidouId;           // 指導ID (PK?)
-    private String gakusekiNo;          // 学籍番号 (FK)
-    private int companyId;          // 会社ID (FK)
+    private int shidoId;               // 指導ID
     
-    private String activityStatus;      // 活動状況
-    private String companyName;         // 会社名（未定の場合など）
-    private String testVenue;           // 試験会場
-    private Integer scheduledDays;      // 予定日数
-    private Date activityDate;          // 活動日
-    private String submissionStatus;    // 提出状況
-    private String desiredInfo;         // 希望情報
-    private String examTime;            // 試験時間
-    private LocalDateTime finalOfferDeadline; // 内定確定期限
-    private String result;              // 結果（内定・不採用など）
+    // 外部キー
+    private int gakusekiBango;         // 学籍番号（学生テーブルと紐付け）
+    private int kigyouId;              // 企業ID（企業テーブルと紐付け）
     
-    // コンストラクタ
+    // 選考状況
+    private String senkoJokyo1;        // 選考状況1
+    private String senkoJokyo2;        // 選考状況2
+    private String senkoJokyo3;        // 選考状況3
+    private String senkoJokyo4;        // 選考状況4
+    private String senkoJokyo5;        // 選考状況5
+    
+    private Date yoteiNissu;           // 予定日数（日付）
+    private String kinmuChi;           // 勤務地
+    private String shikenJoho;         // 試験情報
+    private int teishutsuJokyo;        // 提出状況
+    private String shikenKaijo;        // 試験会場
+    private Time shikenJikan;          // 試験時間
+    
+    private Date naiteiShodakuKigen;   // 内定承諾期限
+    private String biko;               // 備考
+
+    // デフォルトコンストラクタ
     public Employment() {}
 
     // Getter & Setter
-    public Integer getShidouId() {
-        return shidouId;
+
+    public int getShushokuJohoId() {
+        return shushokuJohoId;
     }
 
-    public void setShidouId(int shidouId) {
-        this.shidouId = shidouId;
+    public void setShushokuJohoId(int shushokuJohoId) {
+        this.shushokuJohoId = shushokuJohoId;
     }
 
-    public String getGakusekiNo() {
-        return gakusekiNo;
+    public int getShidoId() {
+        return shidoId;
     }
 
-    public void setGakusekiNo(String gakusekiNo) {
-        this.gakusekiNo = gakusekiNo;
+    public void setShidoId(int shidoId) {
+        this.shidoId = shidoId;
     }
 
-    public Integer getCompanyId() {
-        return companyId;
+    public int getGakusekiBango() {
+        return gakusekiBango;
     }
 
-    public void setCompanyId(int companyId) {
-        this.companyId = companyId;
+    public void setGakusekiBango(int gakusekiBango) {
+        this.gakusekiBango = gakusekiBango;
     }
 
-    public String getActivityStatus() {
-        return activityStatus;
+    public int getKigyouId() {
+        return kigyouId;
     }
 
-    public void setActivityStatus(String activityStatus) {
-        this.activityStatus = activityStatus;
+    public void setKigyouId(int kigyouId) {
+        this.kigyouId = kigyouId;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getSenkoJokyo1() {
+        return senkoJokyo1;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setSenkoJokyo1(String senkoJokyo1) {
+        this.senkoJokyo1 = senkoJokyo1;
     }
 
-    public String getTestVenue() {
-        return testVenue;
+    public String getSenkoJokyo2() {
+        return senkoJokyo2;
     }
 
-    public void setTestVenue(String testVenue) {
-        this.testVenue = testVenue;
+    public void setSenkoJokyo2(String senkoJokyo2) {
+        this.senkoJokyo2 = senkoJokyo2;
     }
 
-    public Integer getScheduledDays() {
-        return scheduledDays;
+    public String getSenkoJokyo3() {
+        return senkoJokyo3;
     }
 
-    public void setScheduledDays(Integer scheduledDays) {
-        this.scheduledDays = scheduledDays;
+    public void setSenkoJokyo3(String senkoJokyo3) {
+        this.senkoJokyo3 = senkoJokyo3;
     }
 
-    public Date getActivityDate() {
-        return activityDate;
+    public String getSenkoJokyo4() {
+        return senkoJokyo4;
     }
 
-    public void setActivityDate(Date activityDate) {
-        this.activityDate = activityDate;
+    public void setSenkoJokyo4(String senkoJokyo4) {
+        this.senkoJokyo4 = senkoJokyo4;
     }
 
-    public String getSubmissionStatus() {
-        return submissionStatus;
+    public String getSenkoJokyo5() {
+        return senkoJokyo5;
     }
 
-    public void setSubmissionStatus(String submissionStatus) {
-        this.submissionStatus = submissionStatus;
+    public void setSenkoJokyo5(String senkoJokyo5) {
+        this.senkoJokyo5 = senkoJokyo5;
     }
 
-    public String getDesiredInfo() {
-        return desiredInfo;
+    public Date getYoteiNissu() {
+        return yoteiNissu;
     }
 
-    public void setDesiredInfo(String desiredInfo) {
-        this.desiredInfo = desiredInfo;
+    public void setYoteiNissu(Date yoteiNissu) {
+        this.yoteiNissu = yoteiNissu;
     }
 
-    public String getExamTime() {
-        return examTime;
+    public String getKinmuChi() {
+        return kinmuChi;
     }
 
-    public void setExamTime(String examTime) {
-        this.examTime = examTime;
+    public void setKinmuChi(String kinmuChi) {
+        this.kinmuChi = kinmuChi;
     }
 
-    public LocalDateTime getFinalOfferDeadline() {
-        return finalOfferDeadline;
+    public String getShikenJoho() {
+        return shikenJoho;
     }
 
-    public void setFinalOfferDeadline(LocalDateTime finalOfferDeadline) {
-        this.finalOfferDeadline = finalOfferDeadline;
+    public void setShikenJoho(String shikenJoho) {
+        this.shikenJoho = shikenJoho;
     }
 
-    public String getResult() {
-        return result;
+    public int getTeishutsuJokyo() {
+        return teishutsuJokyo;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setTeishutsuJokyo(int teishutsuJokyo) {
+        this.teishutsuJokyo = teishutsuJokyo;
+    }
+
+    public String getShikenKaijo() {
+        return shikenKaijo;
+    }
+
+    public void setShikenKaijo(String shikenKaijo) {
+        this.shikenKaijo = shikenKaijo;
+    }
+
+    public Time getShikenJikan() {
+        return shikenJikan;
+    }
+
+    public void setShikenJikan(Time shikenJikan) {
+        this.shikenJikan = shikenJikan;
+    }
+
+    public Date getNaiteiShodakuKigen() {
+        return naiteiShodakuKigen;
+    }
+
+    public void setNaiteiShodakuKigen(Date naiteiShodakuKigen) {
+        this.naiteiShodakuKigen = naiteiShodakuKigen;
+    }
+
+    public String getBiko() {
+        return biko;
+    }
+
+    public void setBiko(String biko) {
+        this.biko = biko;
     }
 }
