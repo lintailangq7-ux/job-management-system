@@ -698,8 +698,13 @@
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>県内外の希望</columnName>
           <logicalName>カラム7</logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../sourceConnections/net.java.amateras.db.visual.model.ForeignKeyModel/target/columns/net.java.amateras.db.visual.model.ColumnModel[3]/columnType"/>
-          <size>2</size>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>VARCHAR</name>
+            <logicalName>文字列</logicalName>
+            <supportSize>true</supportSize>
+            <type>12</type>
+          </columnType>
+          <size>3</size>
           <notNull>false</notNull>
           <primaryKey>false</primaryKey>
           <description></description>

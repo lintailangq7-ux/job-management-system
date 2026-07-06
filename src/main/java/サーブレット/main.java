@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import DAO.StudentDao;
-import model.Student;
+import DAO.EmploymentDAO;
+import model.Employment; 
 
 /**
  * Servlet implementation class main
@@ -32,19 +32,22 @@ public class main extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		StudentDao dao = new StudentDao();
-		List<Student> students = dao.findAll();
+
+		EmploymentDAO Edao = new EmploymentDAO();
 		
-		students.get(0).getDai1KibouShokushu();
-		// studentsリストをJSPに引き継ぐ（重要）
-	    request.setAttribute("students", students);
+
+		List<Employment> employments = Edao.findByGakusekiBango(2024001);
 		
 		
-		for (Student s : students) {
-		    System.out.println(s.getGakusekiBango() + " : " + s.getShimei());
+
+	    request.setAttribute("employments", employments);
+		
+		for (Employment s : employments) {
+		    System.out.println(s.getGakusekiBango() + " : " + s.getGakusekiBango());
 		}
+		
 		RequestDispatcher dispatcher =
-		        request.getRequestDispatcher("/WEB-INF/jsp/Student/Student List.jsp");
+		        request.getRequestDispatcher("/WEB-INF/jsp/Guidance/Guidance List.jsp");
 		dispatcher.forward(request, response);
 	}
 

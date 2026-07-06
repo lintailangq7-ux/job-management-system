@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import DAO.StudentDao;
+import DAO.StudentDAO;
 import model.Student;
 
 /**
@@ -33,7 +33,7 @@ public class login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		StudentDao dao = new StudentDao();
+		StudentDAO dao = new StudentDAO();
 		List<Student> students = dao.findAll();
 		
 		students.get(0).getDai1KibouShokushu();
