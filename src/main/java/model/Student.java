@@ -1,7 +1,7 @@
 package model;
 
 public class Student {
-    private int gakusekiNo;           // 学籍番号 (PK)
+    private int    gakusekiNo;        // 学籍番号 (PK)
     private String name;              // 氏名
     private String nameKana;          // 読み仮名
     private String classCode;         // クラス (FK)
@@ -13,7 +13,7 @@ public class Student {
     private String desiredIndustry;   // 希望業界
     private String desiredOccupation; // 希望職種
     private String desiredLocation;   // 希望勤務地
-    private Integer shidouId;         // 指導ID (FK)
+    private int    shidouId;          // 指導ID (FK)
     private String status;            // 活動状況など
 
     // Getter & Setter（省略せずに全部書きます）

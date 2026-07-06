@@ -1,6 +1,7 @@
 package サーブレット;
 
 import java.io.IOException;
+import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import DAO.StudentDao;
+import model.Student;
 
 /**
  * Servlet implementation class login
@@ -32,7 +34,9 @@ public class login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		StudentDao stDAO = new StudentDao();
-		stDAO.findAll();
+		 List<Student> list = stDAO.findAll();
+		 System.out.println("aaaaaa");
+		System.out.println(list.getFirst());
 		RequestDispatcher dispatcher =
 		        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
