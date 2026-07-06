@@ -1,26 +1,29 @@
-package test;
+package サーブレット;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.util.List;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import DAO.StudentDao;
+import model.Student;
+
 /**
- * Servlet implementation class test
+ * Servlet implementation class main
  */
-@WebServlet("/test")
-public class test extends HttpServlet {
+@WebServlet("/main")
+public class main extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public test() {
+    public main() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,19 +32,20 @@ public class test extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String url = "jdbc:mysql://localhost:3306/jop_managment_system";
-		String user = "root";
-		String password = "パスワード";
-
-		try {
-			Connection con = DriverManager.getConnection(url, user, password);
-		} catch (SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+		StudentDao dao = new StudentDao();
+		List<Student> students = dao.findAll();
+		
+		students.get(0).getDai1KibouShokushu();
+		// studentsリストをJSPに引き継ぐ（重要）
+	    request.setAttribute("students", students);
+		
+		
+		for (Student s : students) {
+		    System.out.println(s.getGakusekiBango() + " : " + s.getShimei());
 		}
-		System.out.println("接続成功！");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispatcher =
+		        request.getRequestDispatcher("/WEB-INF/jsp/Student/Student List.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
