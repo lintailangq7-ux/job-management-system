@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Student;
+import model.Student; 
 
 public class StudentDAO {
 

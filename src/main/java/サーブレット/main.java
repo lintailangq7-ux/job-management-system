@@ -11,7 +11,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import DAO.EmploymentDAO;
-import model.Employment; 
+import DAO.StudentDAO;
+import model.Employment;
+import model.Student; 
 
 /**
  * Servlet implementation class main
@@ -32,14 +34,15 @@ public class main extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		StudentDAO Sdao = new StudentDAO();
 		EmploymentDAO Edao = new EmploymentDAO();
 		
-
+		List<Student> students = Sdao.findAll();
 		List<Employment> employments = Edao.findByGakusekiBango(2024001);
 		
 		
-
+		// studentsリストをJSPに引き継ぐ（重要）
+	    request.setAttribute("students", students);
 	    request.setAttribute("employments", employments);
 		
 		for (Employment s : employments) {
