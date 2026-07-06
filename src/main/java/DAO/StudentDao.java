@@ -30,7 +30,7 @@ public class StudentDao {
 
                 while (rs.next()) {
                     Student s = new Student();
-                    s.setGakusekiNo(rs.getString("gakuseki_no"));   // ★修正
+                    s.setGakusekiNo(rs.getString("gakuseki_no"));   
                     s.setName(rs.getString("name"));
                     // 他の項目も必要に応じて追加
                     list.add(s);
