@@ -33,10 +33,17 @@ public class login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		StudentDao stDAO = new StudentDao();
-		 List<Student> list = stDAO.findAll();
-		 System.out.println("aaaaaa");
-		System.out.println(list.getFirst());
+		StudentDao dao = new StudentDao();
+		List<Student> students = dao.findAll();
+		
+		students.get(0).getDai1KibouShokushu();
+		// studentsリストをJSPに引き継ぐ（重要）
+	    request.setAttribute("students", students);
+		
+		
+		for (Student s : students) {
+		    System.out.println(s.getGakusekiBango() + " : " + s.getShimei());
+		}
 		RequestDispatcher dispatcher =
 		        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);

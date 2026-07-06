@@ -30,7 +30,7 @@ public class test extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "jdbc:mysql://localhost:3306/データベース名";
+		String url = "jdbc:mysql://localhost:3306/jop_managment_system";
 		String user = "root";
 		String password = "パスワード";
 
