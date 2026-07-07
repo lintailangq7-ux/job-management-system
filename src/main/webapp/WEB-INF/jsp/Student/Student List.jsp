@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
-         pageEncoding="UTF-8" import="java.util.List, model.Student" %>
+         pageEncoding="UTF-8" import="java.util.List, model.ModelStudent" %>
 
 <!DOCTYPE html>
 <html>
