@@ -10,22 +10,22 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import DAO.EmploymentDAO;
+import DAO.CompanyDAO;
 import DAO.StudentDAO;
-import model.ModelEmployment;
-import model.ModelStudent; 
+import model.ModelCompany;
+import model.ModelStudent;
 
 /**
- * Servlet implementation class main
+ * Servlet implementation class Company
  */
-@WebServlet("/main")
-public class main extends HttpServlet {
+@WebServlet("/Company")
+public class Company extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public main() {
+    public Company() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,22 +35,22 @@ public class main extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudentDAO Sdao = new StudentDAO();
-		EmploymentDAO Edao = new EmploymentDAO();
+		CompanyDAO Cdao = new CompanyDAO();
 		
-		List<ModelStudent> students = Sdao.findAll();
-		List<ModelEmployment> employments = Edao.findByGakusekiBango(2024001);
+        List<ModelCompany> Companys = Cdao.findAll();
+		List<ModelStudent> Cstudents = Sdao.findAllWithCompany(1001);
 		
 		
-		// studentsリストをJSPに引き継ぐ（重要）
-	    request.setAttribute("students", students);
-	    request.setAttribute("employments", employments);
+		// リストをJSPに引き継ぐ（重要）
+		request.setAttribute(" Companys",  Companys);
+	    request.setAttribute("Cstudents", Cstudents);
 		
-		for (ModelEmployment s : employments) {
+		for (ModelStudent s : Cstudents) {
 		    System.out.println(s.getGakusekiBango() + " : " + s.getGakusekiBango());
 		}
 		
 		RequestDispatcher dispatcher =
-		        request.getRequestDispatcher("/WEB-INF/jsp/Guidance/Guidance List.jsp");
+		        request.getRequestDispatcher("/WEB-INF/jsp/Company/CompanyStudent.jsp");
 		dispatcher.forward(request, response);
 	}
 

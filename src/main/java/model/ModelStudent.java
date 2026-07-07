@@ -1,6 +1,6 @@
 package model;
 
-public class Student {
+public class ModelStudent {
 	    
 	    private int gakusekiBango;      // 学籍番号（主キー）
 	    private String kurasu;          // クラス
@@ -14,7 +14,7 @@ public class Student {
 	    private String seibetsu;        // 性別
 	    private String biko;            // 備考
 	    
-	    public Student() {}
+	    public ModelStudent() {}
 	    
 	    // Getter & Setter（省略可ですが一通り記載）
 	    public int getGakusekiBango() { return gakusekiBango; }

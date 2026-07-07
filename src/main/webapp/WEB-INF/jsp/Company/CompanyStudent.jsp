@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
-         pageEncoding="UTF-8" import="java.util.List, model.Student" %>
+         pageEncoding="UTF-8" 
+         import="java.util.List, model.Student,model.ModelCompany;" %>
 
 <!DOCTYPE html>
 <html>
@@ -16,11 +17,12 @@
     <h1>学生一覧</h1>
 
     <%
-        // セッションから学生リストを受け取る
-        List<ModelStudent> students = (List<ModelStudent>) request.getAttribute("students");
+        // セッション/リクエストから学生リストを受け取る 
+        List<ModelStudent> Cstudents = (List<ModelStudent>) request.getAttribute("Cstudents");
+   		List<ModelCompany> Companys = (List<ModelCompany>) request.getAttribute("Companys");
     %>
 
-    <% if (students != null && !students.isEmpty()) { %>
+    <% if (Cstudents != null && !Cstudents.isEmpty()) { %>
         <table>
             <tr>
                 <th>学籍番号</th>
@@ -31,9 +33,9 @@
                 <th>性別</th>
                 <th>備考</th>
             </tr>
-            
+
             <%
-                for (Student s : students) {
+                for (Student s : Cstudents) {
             %>
                 <tr>
                     <td><%= s.getGakusekiBango() %></td>
@@ -48,9 +50,9 @@
                 }
             %>
         </table>
-        
-        <p>全 <%= students.size() %> 件</p>
-        
+
+        <p>全 <%=Cstudents.size() %> 件</p>
+
     <% } else { %>
         <p>学生データがありません。</p>
     <% } %>

@@ -6,7 +6,7 @@ import java.sql.Time;
 /**
  * 就職情報テーブルに対応するモデルクラス
  */
-public class Employment {
+public class ModelEmployment {
 
     // 主キー
     private int shushokuJohoId;        // 就職情報ID
@@ -35,7 +35,7 @@ public class Employment {
     private String biko;               // 備考
 
     // デフォルトコンストラクタ
-    public Employment() {}
+    public ModelEmployment() {}
 
     // Getter & Setter
 

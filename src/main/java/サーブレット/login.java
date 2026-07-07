@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import DAO.StudentDAO;
-import model.Student;
+import model.ModelStudent;
 
 /**
  * Servlet implementation class login
@@ -34,14 +34,14 @@ public class login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		StudentDAO dao = new StudentDAO();
-		List<Student> students = dao.findAll();
+		List<ModelStudent> students = dao.findAll();
 		
 		students.get(0).getDai1KibouShokushu();
 		// studentsリストをJSPに引き継ぐ（重要）
 	    request.setAttribute("students", students);
 		
 		
-		for (Student s : students) {
+		for (ModelStudent s : students) {
 		    System.out.println(s.getGakusekiBango() + " : " + s.getShimei());
 		}
 		RequestDispatcher dispatcher =

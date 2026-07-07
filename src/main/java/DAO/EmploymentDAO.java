@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Employment;   // 就職情報モデル
+import model.ModelEmployment;
 
 public class EmploymentDAO {   // 指導＋就職情報
 
@@ -18,8 +18,8 @@ public class EmploymentDAO {   // 指導＋就職情報
     /**
      * 就職情報（指導含む）を全件取得
      */
-    public List<Employment> findAll() {
-        List<Employment> list = new ArrayList<>();
+    public List<ModelEmployment> findAll() {
+        List<ModelEmployment> list = new ArrayList<>();
 
         String sql = "SELECT 就職情報ID, 指導ID, 学籍番号, 企業ID, 選考状況1, 選考状況2, " +
                      "選考状況3, 選考状況4, 選考状況5, 予定日数, 勤務地, 試験情報, " +
@@ -35,7 +35,7 @@ public class EmploymentDAO {   // 指導＋就職情報
                  ResultSet rs = ps.executeQuery()) {
 
                 while (rs.next()) {
-                	Employment e = new Employment();
+                	ModelEmployment e = new ModelEmployment();
 
                     e.setShushokuJohoId(rs.getInt("就職情報ID"));
                     e.setShidoId(rs.getInt("指導ID"));
@@ -70,8 +70,8 @@ public class EmploymentDAO {   // 指導＋就職情報
      * @param gakusekiBango 学籍番号
      * @return 就職情報リスト（1人の学生が複数の企業に応募している場合を考慮）
      */
-    public List<Employment> findByGakusekiBango(int gakusekiBango) {
-        List<Employment> list = new ArrayList<>();
+    public List<ModelEmployment> findByGakusekiBango(int gakusekiBango) {
+        List<ModelEmployment> list = new ArrayList<>();
 
         String sql = "SELECT 就職情報ID, 指導ID, 学籍番号, 企業ID, " +
                      " 選考状況1, 選考状況2, 選考状況3, 選考状況4, 選考状況5, " +
@@ -92,7 +92,7 @@ public class EmploymentDAO {   // 指導＋就職情報
                 try (ResultSet rs = ps.executeQuery()) {
 
                     while (rs.next()) {
-                        Employment e = new Employment();
+                    	ModelEmployment e = new ModelEmployment();
 
                         e.setShushokuJohoId(rs.getInt("就職情報ID"));
                         e.setShidoId(rs.getInt("指導ID"));

@@ -17,7 +17,7 @@
 
     <%
         // セッションから学生リストを受け取る
-        List<Employment> employments = (List<Employment>) request.getAttribute("employments");
+        List<ModelEmployment> employments = (List<ModelEmployment>) request.getAttribute("employments");
     %>
 
 <% if (employments != null && !employments.isEmpty()) { %>
@@ -36,7 +36,7 @@
             </tr>
 
             <%
-                for (Employment s : employments) {
+                for (ModelEmployment s : employments) {
             %>
                 <tr>
                     <td><%= s.getShushokuJohoId() %></td>

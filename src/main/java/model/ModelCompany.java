@@ -1,6 +1,6 @@
 package model;
 
-public class Company {
+public class ModelCompany {
 
 
 	    private int kigyouId;           // 企業ID
@@ -11,7 +11,7 @@ public class Company {
 	    private int saiyoJisseki;       // 採用実績
 	    
 	    // コンストラクタ
-	    public Company() {}
+	    public ModelCompany() {}
 	    
 	    // Getter & Setter
 	    public int getKigyouId() { return kigyouId; }

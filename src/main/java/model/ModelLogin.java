@@ -1,11 +1,11 @@
 package model;
 
-public class Login {
+public class ModelLogin {
     
     private int gakusekiBango;      // 学籍番号（FK）
     private String password;        // パスワード
     
-    public Login() {}
+    public ModelLogin() {}
     
     public int getGakusekiBango() { return gakusekiBango; }
     public void setGakusekiBango(int gakusekiBango) { this.gakusekiBango = gakusekiBango; }

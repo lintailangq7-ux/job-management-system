@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Student; 
+import model.ModelStudent; 
 
 public class StudentDAO {
 
@@ -19,8 +19,8 @@ public class StudentDAO {
      * 学生テーブルから全件を取得する
      * @return 学生情報のリスト
      */
-    public List<Student> findAll() {
-        List<Student> list = new ArrayList<>();
+    public List<ModelStudent> findAll() {
+        List<ModelStudent> list = new ArrayList<>();
         
         // ER図に基づいた全カラムを選択
         String sql = "SELECT 学籍番号, クラス, 出席番号, 氏名, 在籍状況, " +
@@ -37,7 +37,7 @@ public class StudentDAO {
                  ResultSet rs = ps.executeQuery()) {
 
                 while (rs.next()) {
-                    Student s = new Student();
+                	ModelStudent s = new ModelStudent();
                     
                     // 全カラムのマッピング
                     s.setGakusekiBango(rs.getInt("学籍番号"));           // 学籍番号
@@ -67,27 +67,29 @@ public class StudentDAO {
      * 学生情報と企業情報を企業IDで紐づけて取得（就職活動中の学生向け）
      * @return 学生＋企業情報のリスト
      */
-    public List<Student> findAllWithCompany() {
-        List<Student> list = new ArrayList<>();
+    public List<ModelStudent> findAllWithCompany(int kigyouId) {
+        List<ModelStudent> list = new ArrayList<>();
 
-        String sql = "SELECT s.学籍番号, s.クラス, s.出席番号, s.氏名, s.在籍状況, " +
-                     "       s.第1希望職種, s.第2希望職種, s.第3希望職種, " +
-                     "       s.県内外の希望, s.性別, s.備考, " +
-                     "       k.企業ID, k.会社名, k.住所, k.電話番号 " +
-                     "FROM 学生 s " +
-                     "LEFT JOIN 就職情報 j ON s.学籍番号 = j.学籍番号 " +
-                     "LEFT JOIN 企業 k ON j.企業ID = k.企業ID " +
-                     "ORDER BY s.学籍番号";
+        String sql = """
+                SELECT s.*
+                FROM 就職情報 j
+                INNER JOIN 学生 s ON j.学籍番号 = s.学籍番号
+                WHERE j.企業ID = ?
+                ORDER BY s.学籍番号 ASC
+            """;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             try (Connection con = DriverManager.getConnection(URL, USER, PASS);
-                 PreparedStatement ps = con.prepareStatement(sql);
-                 ResultSet rs = ps.executeQuery()) {
+                    PreparedStatement ps = con.prepareStatement(sql)) {   // ← ここまででps作成
 
-                while (rs.next()) {
-                    Student s = new Student();
+                   ps.setInt(1, kigyouId);   
+
+                   try (ResultSet rs = ps.executeQuery()) {
+
+                       while (rs.next()) {
+                    ModelStudent s = new ModelStudent();
 
                     // 学生情報
                     s.setGakusekiBango(rs.getInt("学籍番号"));
@@ -109,7 +111,8 @@ public class StudentDAO {
 
                     list.add(s);
                 }
-            }
+              }
+           }
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("学生＋企業情報取得エラー: " + e.getMessage());

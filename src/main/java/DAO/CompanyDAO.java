@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Company;   // 企業モデルクラス
+import model.ModelCompany;   // 企業モデルクラス
 
 public class CompanyDAO {
 
@@ -18,8 +18,8 @@ public class CompanyDAO {
     /**
      * 企業テーブルから全件を取得
      */
-    public List<Company> findAll() {
-        List<Company> list = new ArrayList<>();
+    public List<ModelCompany> findAll() {
+        List<ModelCompany> list = new ArrayList<>();
 
         String sql = "SELECT 企業ID, 会社名, 住所, 電話番号, メールアドレス, 採用実績 " +
                      "FROM 企業 " +
@@ -33,7 +33,7 @@ public class CompanyDAO {
                  ResultSet rs = ps.executeQuery()) {
 
                 while (rs.next()) {
-                	Company c = new Company();
+                	ModelCompany c = new ModelCompany();
 
                     c.setKigyouId(rs.getInt("企業ID"));
                     c.setKaishaMei(rs.getString("会社名"));
